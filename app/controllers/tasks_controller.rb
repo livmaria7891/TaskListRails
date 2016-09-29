@@ -1,25 +1,26 @@
 class TasksController < ApplicationController
   def index
     @welcome_msg = "Things to do."
-    @tasks = TasksController.alltasks
+    @tasks = Task.all
   end
 
+  #I don't understand why this is happening
   def new
+    @this_task = Task.new
   end
 
   def create
+    @params = params
+    #and why is this here?
+    @this_task = Task.new
+    @this_task.name = params[:task][:name]
+    @this_task.description = params[:task][:description]
+    @this_task.save
+    redirect_to action: 'index'
   end
 
   def show
-    @tasks = TasksController.alltasks
-    @this_task = nil
-
-    @tasks.each do |t|
-      num = params[:id].to_i
-      if t[:id] == num
-        @this_task = t
-      end
-    end
+    @this_task = Task.find(params[:id].to_i)
   end
 
 
@@ -29,15 +30,22 @@ class TasksController < ApplicationController
   def update
   end
 
-  def destroy
+  def task
+    @this_task ||= Task.find(params[:id].to_i)
   end
 
-  def self.alltasks
-    [
-      {id: 1, name:"Become a Millionaire", description:"have at least one million dollars", completion_status: false, completed_at: nil},
-      {id: 2, name:"Interview the President", description:"meet president, ask him about his favorite Thai restaurant", completion_status: false, completed_at: nil},
-      {id: 3, name:"Eat an entire pizza, solo.", description:"eat a pizza by myself", completion_status: true, completed_at: "yesterday"}
-    ]
-    #name, description, completion status, and completion date.
+  def destroy
+    task.destroy
+    redirect_to :index
   end
+
+
+  # def self.alltasks
+  #   [
+  #     {id: 1, name:"Become a Millionaire", description:"have at least one million dollars", completion_status: false, completed_at: nil},
+  #     {id: 2, name:"Interview the President", description:"meet president, ask him about his favorite Thai restaurant", completion_status: false, completed_at: nil},
+  #     {id: 3, name:"Eat an entire pizza, solo.", description:"eat a pizza by myself", completion_status: true, completed_at: "yesterday"}
+  #   ]
+  #   #name, description, completion status, and completion date.
+  # end
 end
