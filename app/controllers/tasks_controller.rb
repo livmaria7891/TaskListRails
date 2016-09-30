@@ -15,6 +15,7 @@ class TasksController < ApplicationController
     @this_task = Task.new
     @this_task.name = params[:task][:name]
     @this_task.description = params[:task][:description]
+    @this_task.completion_status = false
     @this_task.save
     redirect_to action: 'index'
   end
@@ -25,9 +26,17 @@ class TasksController < ApplicationController
 
 
   def edit
+    task
   end
 
   def update
+  end
+
+  def mark_complete
+    task.completed_at = Time.now
+    task.completion_status = true
+    task.save
+    redirect_to :index
   end
 
   def task

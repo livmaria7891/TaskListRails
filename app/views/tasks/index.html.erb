@@ -2,6 +2,7 @@
 <p><% @tasks.each do |t| %></p>
   <h2><%= link_to( t.name,  show_path(t[:id])) %></h2>
   <%= button_to "Delete Task", {action: "destroy", id: t[:id] }, method: :delete, data: { confirm: "Do you really not need to do this anymore?"} %>
+  <%= button_to "Mark Complete", {action: "mark_complete", id: t[:id] }, method: :patch %>
 <% end %>
 
 

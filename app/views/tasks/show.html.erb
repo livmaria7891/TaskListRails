@@ -3,3 +3,4 @@
 <h4><%= @this_task.completion_status %></h4>
 <h4><%= @this_task.completed_at %></h4>
 <%= button_to "Delete Task", {action: "destroy", id: @this_task[:id] }, method: :delete, data: { confirm: "Do you really not need to do this anymore?"} %>
+<%= button_to "Edit", {action: "edit", id: @this_task[:id] }, method: :get %>
