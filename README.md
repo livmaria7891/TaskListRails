@@ -1,3 +1,7 @@
+# Task List Reflection
+  I was nervous about this assignment when I began because I didn't feel like I had a good understanding of the MVC and which parts did what. As I started the project, I realized that I understood more than I gave myself credit for. I was able to set up the file structure and get most of the parts to work without getting the model, view, and controller mixed up. 
+  I had a hard time figuring out how to redirect to the index page after updating the database, but I learned the redirect_to method was easy fix. I also had difficulty getting radio buttons to update the database to mark a method complete or incomplete. After struggling with them for sometime, I have a better understanding of how to use them now. 
+
 # Task List Rails ✅
 We are going to build a Task List in Rails. This web application will enable us to keep track of list of tasks with the functionality to add, edit and remove tasks from a list.
 
