@@ -1,6 +1,6 @@
 <h1>Add a task</h1>
 
-<%= form_for @this_task, as: :task, url: create_path do |f| %>
+<!-- <%= form_for @this_task, as: :task, url: create_path do |f| %>
 
 <%= f.label :name %>
 <%= f.text_field :name %>
@@ -8,7 +8,9 @@
 <%= f.label :description %>
 <%= f.text_area :description %>
 
-<!-- Why does the button say Create Task? How do I change it? -->
-<%= f.submit %>
+<!- Why does the button say Create Task? How do I change it? -->
+<%#= f.submit %>
 
-<% end %>
+<%# end %> -->
+
+<%= render partial: "form", locals: {action_name: 'create'} %>

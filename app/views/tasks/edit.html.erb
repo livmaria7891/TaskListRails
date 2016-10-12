@@ -1,6 +1,6 @@
 <h1>Edit it.</h1>
-
-<%#= form_for @this_task, as: :task, url: create_path do |f| %>
+<!-- WHY DOES THIS FORM PREPOPULATE??-->
+<%#= form_for @this_task, as: :task, url: update_path do |f| %>
 
 <%#= f.label :name %>
 <%#= f.text_field :name%>
@@ -8,7 +8,19 @@
 <%#= f.label :description %>
 <%#= f.text_area :description %>
 
+<!-- KEEP PLAYING WITH RADIO BUTTONS..LATER  -->
+<%#= f.label "Done?" %>
+<%#= f.label :completion_status, "Yes"%>
+<%#= f.radio_button :completion_status, true %>
+<%#= f.label :completion_status, "No"%>
+<%#= f.radio_button :completion_status, false%>
+
+
+
 <!-- Why does the button say Create Task? How do I change it? -->
 <%#= f.submit %>
 
+
 <%# end %>
+<%= render partial: "form", locals: { action_name: "update"} %>
+<!-- radio_button(object_name, method, tag_value, options = {}) -->

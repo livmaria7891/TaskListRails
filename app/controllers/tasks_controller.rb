@@ -26,10 +26,16 @@ class TasksController < ApplicationController
 
 
   def edit
-    task
+    @this_task = task
   end
 
   def update
+    ##Add if yes true to radio buttons
+    task.name = params[:task][:name]
+    task.description = params[:task][:description]
+    task.completion_status = params[:task][:completion_status]
+    task.save
+    redirect_to :index
   end
 
   def mark_complete
